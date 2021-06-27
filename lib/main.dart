@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:productivity_timer/widgets.dart';
 import './widgets.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 void main() => runApp(MyApp());
 
@@ -26,70 +27,75 @@ class TimerHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('My work timer'),
       ),
-      body: Column(
-        children: [
-          Row(
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          final double availableWidth = constraints.maxWidth;
+          return Column(
             children: [
-              Padding(
-                padding: EdgeInsets.all(defaultPadding),
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(defaultPadding),
+                  ),
+                  Expanded(
+                    child: ProductivityButton(
+                      color: Color(0xff009688),
+                      text: 'Work',
+                      onPressed: emptyMethod,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(defaultPadding),
+                  ),
+                  Expanded(
+                    child: ProductivityButton(
+                      color: Color(0xff607D8B),
+                      text: 'Short break',
+                      onPressed: emptyMethod,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(defaultPadding),
+                  ),
+                  Expanded(
+                    child: ProductivityButton(
+                      color: Color(0xff455A64),
+                      text: 'Long break',
+                      onPressed: emptyMethod,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(defaultPadding),
+                  ),
+                ],
               ),
               Expanded(
-                child: ProductivityButton(
-                  color: Color(0xff009688),
-                  text: 'Work',
-                  onPressed: emptyMethod,
-                ),
+                child: Text('hello'),
               ),
-              Padding(
-                padding: EdgeInsets.all(defaultPadding),
-              ),
-              Expanded(
-                child: ProductivityButton(
-                  color: Color(0xff607D8B),
-                  text: 'Short break',
-                  onPressed: emptyMethod,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(defaultPadding),
-              ),
-              Expanded(
-                child: ProductivityButton(
-                  color: Color(0xff455A64),
-                  text: 'Long break',
-                  onPressed: emptyMethod,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(defaultPadding),
-              ),
+              Row(
+                children: [
+                  Padding(padding: EdgeInsets.all(defaultPadding)),
+                  Expanded(
+                    child: ProductivityButton(
+                      color: Color(0xff212121),
+                      text: 'Stop',
+                      onPressed: emptyMethod,
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.all(defaultPadding)),
+                  Expanded(
+                    child: ProductivityButton(
+                      color: Color(0xff009688),
+                      text: 'Restart',
+                      onPressed: emptyMethod,
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.all(defaultPadding)),
+                ],
+              )
             ],
-          ),
-          Expanded(
-            child: Text('hello'),
-          ),
-          Row(
-            children: [
-              Padding(padding: EdgeInsets.all(defaultPadding)),
-              Expanded(
-                child: ProductivityButton(
-                  color: Color(0xff212121),
-                  text: 'Stop',
-                  onPressed: emptyMethod,
-                ),
-              ),
-              Padding(padding: EdgeInsets.all(defaultPadding)),
-              Expanded(
-                child: ProductivityButton(
-                  color: Color(0xff009688),
-                  text: 'Restart',
-                  onPressed: emptyMethod,
-                ),
-              ),
-              Padding(padding: EdgeInsets.all(defaultPadding)),
-            ],
-          )
-        ],
+          );
+        },
       ),
     );
   }
