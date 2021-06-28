@@ -70,7 +70,14 @@ class TimerHomePage extends StatelessWidget {
                 ],
               ),
               Expanded(
-                child: Text('hello'),
+                child: CircularPercentIndicator(
+                  radius: availableWidth / 2,
+                  lineWidth: 10.0,
+                  percent: 1,
+                  center: Text('30:00',
+                      style: Theme.of(context).textTheme.headline4),
+                  progressColor: Color(0xff009688),
+                ),
               ),
               Row(
                 children: [
@@ -92,7 +99,7 @@ class TimerHomePage extends StatelessWidget {
                   ),
                   Padding(padding: EdgeInsets.all(defaultPadding)),
                 ],
-              )
+              ),
             ],
           );
         },
