@@ -19,4 +19,18 @@ class CountDownTimer {
     String formattedTime = minutes + ':' + seconds;
     return formattedTime;
   }
+
+  Stream<TimerModel> stream() async* {
+    yield* Stream.periodic(Duration(seconds: 1), (int a) {
+      if (this._isActive) {
+        _time = _time! - Duration(seconds: 1);
+        _radius = _time!.inSeconds / _fullTime!.inSeconds;
+        if (_time!.inSeconds <= 0) {
+          _isActive = false;
+        }
+      }
+      var time = returnTime(_time!);
+      return TimerModel(time, _radius);
+    });
+  }
 }
