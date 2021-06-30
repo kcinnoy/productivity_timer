@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:productivity_timer/widgets.dart';
 import './widgets.dart';
+import './timer.dart';
+import './TimerModel.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 void main() => runApp(MyApp());
@@ -20,9 +22,11 @@ class MyApp extends StatelessWidget {
 
 class TimerHomePage extends StatelessWidget {
   final double defaultPadding = 5.0;
+  final CountDownTimer timer = CountDownTimer();
 
   @override
   Widget build(BuildContext context) {
+    timer.startWork();
     return Scaffold(
       appBar: AppBar(
         title: Text('My work timer'),
@@ -73,8 +77,8 @@ class TimerHomePage extends StatelessWidget {
                 child: CircularPercentIndicator(
                   radius: availableWidth / 2,
                   lineWidth: 10.0,
-                  percent: 1,
-                  center: Text('30:00',
+                  percent: timer.percent,
+                  center: Text(timer.time,
                       style: Theme.of(context).textTheme.headline4),
                   progressColor: Color(0xff009688),
                 ),

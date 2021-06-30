@@ -1,12 +1,23 @@
 import 'dart:async';
-import './timermodel.dart';
+import './TimerModel.dart';
 
 class CountDownTimer {
   double _radius = 1;
+  double? _percent;
   bool _isActive = true;
   Timer? timer;
   Duration? _time;
   Duration? _fullTime;
+  int work = 30;
+
+  get time => _time;
+  get percent => _percent;
+
+  void startWork() {
+    _radius = 1;
+    _time = Duration(minutes: this.work, seconds: 0);
+    _fullTime = _time;
+  }
 
   String returnTime(Duration t) {
     String minutes = (t.inMinutes < 10)
