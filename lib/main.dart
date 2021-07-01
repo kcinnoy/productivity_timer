@@ -41,6 +41,11 @@ class TimerHomePage extends StatelessWidget {
             itemBuilder: (BuildContext context) {
               return menuItems.toList();
             },
+            onSelected: (s) {
+              if (s == 'Settings') {
+                gotToSettings(context);
+              }
+            },
           ),
         ],
       ),
@@ -133,4 +138,9 @@ class TimerHomePage extends StatelessWidget {
   }
 
   void emptyMethod() {}
+
+  void gotToSettings(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => SettingsScreen()));
+  }
 }
