@@ -37,10 +37,9 @@ class CountDownTimer {
     String minutes = (t.inMinutes < 10)
         ? '0' + t.inMinutes.toString()
         : t.inMinutes.toString();
-    int numSeconds = t.inSeconds - (t.inSeconds * 60);
-    String seconds = (numSeconds < 10)
-        ? '10' + numSeconds.toString()
-        : numSeconds.toString();
+    int numSeconds = t.inSeconds - (t.inMinutes * 60);
+    String seconds =
+        (numSeconds < 10) ? '0' + numSeconds.toString() : numSeconds.toString();
     String formattedTime = minutes + ':' + seconds;
     return formattedTime;
   }

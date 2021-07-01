@@ -45,7 +45,7 @@ class TimerHomePage extends StatelessWidget {
                     child: ProductivityButton(
                       color: Color(0xff009688),
                       text: 'Work',
-                      onPressed: emptyMethod,
+                      onPressed: () => timer.startWork(),
                     ),
                   ),
                   Padding(
@@ -55,7 +55,7 @@ class TimerHomePage extends StatelessWidget {
                     child: ProductivityButton(
                       color: Color(0xff607D8B),
                       text: 'Short break',
-                      onPressed: emptyMethod,
+                      onPressed: () => timer.startBreak(true),
                     ),
                   ),
                   Padding(
@@ -65,7 +65,7 @@ class TimerHomePage extends StatelessWidget {
                     child: ProductivityButton(
                       color: Color(0xff455A64),
                       text: 'Long break',
-                      onPressed: emptyMethod,
+                      onPressed: () => timer.startBreak(false),
                     ),
                   ),
                   Padding(
