@@ -8,11 +8,29 @@ class CountDownTimer {
   Duration? _time;
   Duration? _fullTime;
   int work = 30;
+  int shortBreak = 5;
+  int longBreak = 20;
+
+  void startBreak(bool isShort) {
+    _radius = 1;
+    _time = Duration(minutes: (isShort) ? shortBreak : longBreak, seconds: 0);
+    _fullTime = _time;
+  }
 
   void startWork() {
     _radius = 1;
     _time = Duration(minutes: this.work, seconds: 0);
     _fullTime = _time;
+  }
+
+  void stopTimer() {
+    this._isActive = false;
+  }
+
+  void startTimer() {
+    if (_time!.inSeconds > 0) {
+      this._isActive = true;
+    }
   }
 
   String returnTime(Duration t) {
